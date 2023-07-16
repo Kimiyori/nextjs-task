@@ -2,7 +2,7 @@
 import { Dropdown } from '@/components/feature/Dropdown/DropdownWrapper';
 import { TimerContext } from '@/context/TimerContext';
 import { useContext } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 const TimeWrapper = styled.div`
   position: relative;
@@ -28,4 +28,3 @@ export const Time = () => {
     </>
   );
 };
-

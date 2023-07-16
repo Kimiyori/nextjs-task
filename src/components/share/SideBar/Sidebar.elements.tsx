@@ -1,6 +1,6 @@
 'use client';
 import React, { ReactNode, useEffect, useReducer } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Image from 'next/image';
 import { SubMenu } from './SubMenu';
 import Resume from '@assets/icons/header/Resume.svg';

@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: 'Timer page',
 };
 
-
 const TimePage = () => {
   return <Time />;
 };

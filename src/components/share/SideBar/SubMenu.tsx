@@ -2,7 +2,7 @@
 import React, { useState, MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { sideBar } from '@/data/header';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import Dropdown from '@assets/icons/common/Dropdown.svg';

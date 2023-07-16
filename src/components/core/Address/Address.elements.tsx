@@ -1,5 +1,5 @@
 'use client';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 export const AddressListWrapper = styled.address`
   display: flex;
   flex-direction: column;

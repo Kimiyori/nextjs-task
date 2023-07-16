@@ -1,5 +1,5 @@
 'use client';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const ToDoListContainer = styled.div<{ $bgColor: string }>`
   width: 100%;

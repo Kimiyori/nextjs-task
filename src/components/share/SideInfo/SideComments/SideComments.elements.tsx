@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode, useReducer } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Image from 'next/image';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import DownButton from '@assets/icons/common/Dropdown.svg';

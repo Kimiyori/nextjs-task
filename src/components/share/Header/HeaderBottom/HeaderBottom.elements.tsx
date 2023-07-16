@@ -1,5 +1,5 @@
 'use client';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { ReactNode } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';

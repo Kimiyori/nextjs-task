@@ -3,7 +3,7 @@ import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import DownButton from '@assets/icons/common/Dropdown.svg';
 import { ReactNode, useReducer } from 'react';
 import Image from 'next/image';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 const AsideBody = styled.aside`
   background: ${(props) => props.theme.color.Secondary};
   text-align: center;
