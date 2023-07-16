@@ -1,9 +1,10 @@
-import { useReducer } from "react";
-import styled from "styled-components";
-import Image from "next/image";
-import UpButton from "@assets/icons/resume/nav/UpButton.svg";
-import DownButton from "@assets/icons/common/Dropdown.svg";
-const NavTitle = styled.div`
+'use client';
+import { ReactNode, useReducer } from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
+import UpButton from '@assets/icons/resume/nav/UpButton.svg';
+import DownButton from '@assets/icons/common/Dropdown.svg';
+export const NavTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,7 +15,7 @@ const NavTitle = styled.div`
     font-size: ${(props) => props.theme.font.size.normal};
   }
 `;
-const AsideBody = styled.aside`
+export const AsideBody = styled.aside`
   background: ${(props) => props.theme.color.Secondary};
   text-align: center;
   padding-top: 1rem;
@@ -30,39 +31,29 @@ const AsideBody = styled.aside`
   }
   margin-bottom: 2rem;
 `;
-const TextArea = styled.textarea`
+export const TextArea = styled.textarea`
   width: 100%;
   display: block;
   min-height: 100px;
   border-radius: 5px;
   margin-bottom: 1rem;
 `;
-const CommentButton = styled.button`
+export const CommentButton = styled.button`
   width: 100%;
   background: ${(props) => props.theme.color.Primary};
   border: 1px solid;
   padding: 0.5rem;
 `;
-export const SideComments = () => {
+export const SideCommentsWrapper = ({ title, children }: { title: string; children: ReactNode }) => {
   const [show, toggle] = useReducer((checked) => !checked, true);
   return (
     <>
       <AsideBody>
         <NavTitle onClick={toggle}>
-          <h4>Share your thoughts</h4>
-          <Image
-            src={show ? UpButton : DownButton}
-            width={24}
-            alt="UpButton icon"
-          />
+          <h4>{title}</h4>
+          <Image src={show ? UpButton : DownButton} width={24} alt="UpButton icon" />
         </NavTitle>
-        {show && (
-          <>
-            <hr />
-            <TextArea />
-            <CommentButton type="button">Save</CommentButton>
-          </>
-        )}
+        {show && children}
       </AsideBody>
     </>
   );

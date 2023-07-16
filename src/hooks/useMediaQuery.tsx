@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useMediaQuery = (query: string) => {
   const getMatches = (query: string): boolean => {
-
-      return window.matchMedia(query).matches;
-
+    return window.matchMedia(query).matches;
   };
 
   const [matches, setMatches] = useState<boolean>(getMatches(query));
@@ -20,9 +18,9 @@ export const useMediaQuery = (query: string) => {
     handleChange();
 
     // Listen matchMedia
-    matchMedia.addEventListener("change", handleChange);
+    matchMedia.addEventListener('change', handleChange);
 
-    return () => matchMedia.removeEventListener("change", handleChange);
+    return () => matchMedia.removeEventListener('change', handleChange);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);

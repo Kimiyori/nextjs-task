@@ -1,11 +1,11 @@
-"use client";
-import React, { useState, MouseEvent } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import styled from "styled-components";
-import { sideBar } from "@/data/header";
-import UpButton from "@assets/icons/resume/nav/UpButton.svg";
-import Dropdown from "@assets/icons/common/Dropdown.svg";
+'use client';
+import React, { useState, MouseEvent } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { sideBar } from '@/data/header';
+import UpButton from '@assets/icons/resume/nav/UpButton.svg';
+import Dropdown from '@assets/icons/common/Dropdown.svg';
 const SidebarButton = styled.button`
   border: 0;
   background: ${(props) => props.theme.Primary};
@@ -45,13 +45,7 @@ const DropdownLink = styled(Link)`
   }
 `;
 
-export const SubMenu = ({
-  item,
-  toggleSidebar,
-}: {
-  item: (typeof sideBar)[0];
-  toggleSidebar: () => void;
-}) => {
+export const SubMenu = ({ item, toggleSidebar }: { item: typeof sideBar[0]; toggleSidebar: () => void }) => {
   const [subnav, setSubnav] = useState(false);
 
   const showSubnav = (event: MouseEvent<HTMLButtonElement>) => {
@@ -61,34 +55,18 @@ export const SubMenu = ({
 
   return (
     <>
-      <SidebarButton
-        onClick={(event: MouseEvent<HTMLButtonElement>) =>
-          item.children && showSubnav(event)
-        }
-      >
+      <SidebarButton onClick={(event: MouseEvent<HTMLButtonElement>) => item.children && showSubnav(event)}>
         <div>
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>
-        <div>
-          {subnav ? (
-            <Image src={UpButton} alt="Back" />
-          ) : (
-            <Image src={Dropdown} alt="Back" />
-          )}
-        </div>
+        <div>{subnav ? <Image src={UpButton} alt="Back" /> : <Image src={Dropdown} alt="Back" />}</div>
       </SidebarButton>
       {subnav &&
         item.children &&
         item.children.map((item, index) => {
           return (
             <DropdownLink href={item.url} key={index} onClick={toggleSidebar}>
-              {
-                <Image
-                  loading="eager"
-                  src={item.img.image}
-                  alt={item.img.altName}
-                />
-              }
+              {<Image loading="eager" src={item.img.image} alt={item.img.altName} />}
               <SidebarLabel>{item.name}</SidebarLabel>
             </DropdownLink>
           );
