@@ -3,7 +3,12 @@ import { Dropdown } from '@/components/feature/Dropdown/DropdownWrapper';
 import { TimerContext } from '@/context/TimerContext';
 import { useContext } from 'react';
 import styled from 'styled-components';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Timer page',
+  description: 'Timer page',
+};
 const TimeWrapper = styled.div`
   position: relative;
   display: flex;

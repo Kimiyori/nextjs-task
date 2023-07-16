@@ -3,7 +3,12 @@ import { Dropdown } from '@/components/feature/Dropdown/DropdownWrapper';
 import MapComponent from '@/components/feature/Map/Map';
 import { useState } from 'react';
 import styled from 'styled-components';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Map page',
+  description: 'Map page',
+};
 const MenuWrapper = styled.div`
   position: relative;
   display: flex;

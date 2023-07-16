@@ -7,17 +7,17 @@ import Friends from '@assets/icons/header/Friends.svg';
 import { sideBar } from '@/data/header';
 import { devices } from '@/data/breakpoints';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { SideInfo } from '../SideInfo/SideInfo';
+import { SideInfo } from '../SideInfo/SideInfoMain/SideInfo';
 const NavIcon = styled.button`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: ${(props) => props.theme.color.Primary};
+  background: ${(props) => props.theme.color.Secondary};
   border: 0;
 `;
 
 const SidebarNav = styled.nav<{ $sidebar: boolean }>`
-  background: ${(props) => props.theme.color.Primary};
+  background: ${(props) => props.theme.color.Background};
   display: flex;
   justify-content: flex-end;
   position: fixed;
@@ -33,6 +33,7 @@ const SidebarNav = styled.nav<{ $sidebar: boolean }>`
 
 const SidebarWrap = styled.div`
   width: 100%;
+
 `;
 export const StyledSideInfo = styled(SideInfo)`
   margin: 3rem;

@@ -6,8 +6,8 @@ export const HeaderBottom = () => {
   return (
     <>
       <HeaderBottomWrapper>
-        <HeaderMenu data={bottomLeftHeader} />
-        <HeaderMenu data={bottomRightHeader} />
+        <HeaderMenu $primary data={bottomLeftHeader} />
+        <HeaderMenu $primary data={bottomRightHeader} />
       </HeaderBottomWrapper>
     </>
   );

@@ -21,6 +21,7 @@ const AsideBody = styled.aside`
 `;
 
 const NavTitle = styled.div`
+  color: ${(props) => props.theme.color.OnSecondary};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +33,7 @@ const NavTitle = styled.div`
   }
 `;
 export const NavMenu = styled.ul`
+  color: ${(props) => props.theme.color.OnSecondary};
   display: flex;
   flex-direction: column;
   padding-left: 0;

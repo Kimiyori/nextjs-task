@@ -6,19 +6,19 @@ import { ReactNode } from 'react';
 import { Sidebar } from '../../SideBar/Sidebar';
 
 export const UpperHeaderSection = styled.section`
-  background: ${(props) => props.theme.color.Primary};
+  background: ${(props) => props.theme.color.Secondary};
   min-height: 64px;
   z-index: 1;
   margin: 0;
   padding: 0;
   padding-left: 3rem;
   padding-right: 3rem;
-  box-shadow: ${(props) => props.theme.boxShadow};
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
 `;
 export const LeftElement = styled.figure`
+  color: ${(props) => props.theme.color.OnSecondary};
   margin: 0;
   display: flex;
   align-items: center;

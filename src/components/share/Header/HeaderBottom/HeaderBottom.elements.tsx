@@ -5,7 +5,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
 
 const BottomHeaderSection = styled.section`
-  background: ${(props) => props.theme.color.Secondary};
+  background: ${(props) => props.theme.color.Primary};
   min-height: 40px;
   margin: 0;
   padding: 0;

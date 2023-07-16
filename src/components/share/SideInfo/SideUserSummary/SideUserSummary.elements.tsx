@@ -25,10 +25,12 @@ export const StyledUserAvatar = styled(Image)`
 export const Name = styled.h4`
   font-weight: ${(props) => props.theme.font.weight};
   font-size: ${(props) => props.theme.font.size.middle};
+  color: ${(props) => props.theme.color.OnSecondary};
   margin: 0;
 `;
 export const Activity = styled.h5`
   font-weight: ${(props) => props.theme.font.weight};
+  color: ${(props) => props.theme.color.OnSecondary};
   font-style: italic;
   font-size: ${(props) => props.theme.font.size.normal};
   margin: 0;

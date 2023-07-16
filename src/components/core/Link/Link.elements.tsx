@@ -12,6 +12,7 @@ export type THNavLink = {
   img: { image: string; altName: string };
   name: string;
   isHorizontal?: boolean;
+  $primary?: boolean;
 };
 
 export type TNavLinkWrapper = {
@@ -29,10 +30,11 @@ export const LinkContainer = styled.li<{ $isActive: boolean }>`
   ${({ $isActive }) =>
     $isActive &&
     css`
-      background: ${(props) => props.theme.color.Primary};
+      background: ${(props) => props.theme.color.Surface};
     `}
 `;
-export const LinkText = styled.p<{ $isHorizontal: boolean }>`
+export const LinkText = styled.p<{ $isHorizontal: boolean; $primary?: boolean }>`
+  color: ${(props) => (props.$primary ? props.theme.color.OnPrimary : props.theme.color.OnSecondary)};
   ${({ $isHorizontal }) =>
     $isHorizontal
       ? css`

@@ -7,7 +7,7 @@ import {
   ResumeWrapperSkills,
 } from '@/components/pageSpecific/resume.elements';
 import { AddressList } from '@/components/core/Address/AddressList';
-import { SideInfo } from '@/components/share/SideInfo/SideInfo';
+import { SideInfo } from '@/components/share/SideInfo/SideInfoMain/SideInfo';
 import { skillsList } from '@/data/resume';
 import { SkillList } from '@/components/core/SkillList/SkillList';
 import { Fragment } from 'react';

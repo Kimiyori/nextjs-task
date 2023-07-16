@@ -5,7 +5,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
 
 export const MainResumeWrapper = styled.main`
-  background: ${(props) => props.theme.color.Primary};
+  background: ${(props) => props.theme.color.Background};
   margin: 3rem;
   display: flex;
   gap: 3rem;
@@ -35,7 +35,7 @@ export const ResumeImageWrapper = styled.div`
     width: 100%;
     background: ${(props) => props.theme.color.Secondary};
     color: ${(props) => props.theme.color.OnSecondary};
-    opacity: 0.5;
+    opacity: 0.4;
     margin: 0;
   }
 `;
@@ -54,6 +54,7 @@ export const ResumeWrapper = ({ children, className }: { children?: ReactNode; c
 export const ResumeWrapperSkills = styled(ResumeWrapper)`
   h2 {
     margin: 0;
+    color: ${(props) => props.theme.color.OnSecondary};
     font-size: ${(props) => props.theme.font.size.big};
   }
 `;

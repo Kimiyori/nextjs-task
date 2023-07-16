@@ -1,6 +1,6 @@
 import { Header } from '@/components/share/Header/HeaderMain';
 import type { Metadata } from 'next';
-import { ThemeContext } from '@/context/themeContext';
+import { ThemeContext } from '@/context/ThemeContext';
 import { TimerProvider } from '@/context/TimerContext';
 import { GlobalStyles } from './globaStyles';
 

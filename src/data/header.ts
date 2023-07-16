@@ -23,6 +23,11 @@ export const bottomLeftHeader = [
     img: { image: Time, altName: 'Time' },
     name: 'Time',
   },
+  {
+    url: '/todo',
+    img: { image: Time, altName: 'Time' },
+    name: 'ToDo',
+  },
 ];
 export const bottomRightHeader = [
   {

@@ -12,6 +12,7 @@ export const NavTitle = styled.div`
   width: 100%;
   h4 {
     margin: 0;
+    color: ${(props) => props.theme.color.OnSecondary};
     font-size: ${(props) => props.theme.font.size.normal};
   }
 `;
@@ -40,6 +41,7 @@ export const TextArea = styled.textarea`
 `;
 export const CommentButton = styled.button`
   width: 100%;
+  color: ${(props) => props.theme.color.OnPrimary};
   background: ${(props) => props.theme.color.Primary};
   border: 1px solid;
   padding: 0.5rem;
