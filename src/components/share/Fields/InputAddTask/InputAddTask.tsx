@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { ChangeEvent, useContext, useState } from 'react';
 import { InputForm } from '@components/core/Input/Input';
 import { TasksContext } from '@context/TasksContext';

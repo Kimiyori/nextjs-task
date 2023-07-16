@@ -11,7 +11,7 @@ type TToDoEditItem = {
   setCurrentTask: Dispatch<SetStateAction<string>>;
 };
 
-export const ToDoEditTask= ({ data, toggleFrom, currentTask, setCurrentTask }: TToDoEditItem) => {
+export const ToDoEditTask = ({ data, toggleFrom, currentTask, setCurrentTask }: TToDoEditItem) => {
   const { removeTask, updateTask } = useContext(TasksContext);
   const handleCancel = () => {
     setCurrentTask(data.content);

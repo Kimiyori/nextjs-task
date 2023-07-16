@@ -10,9 +10,9 @@ export const ToDoListContainer = styled.div<{ $bgColor: string }>`
     margin: 0 4rem 0 4rem;
   }
   h3 {
-    background: rgba(${(props) => props.$bgColor},0.3);
-    margin:0;
-    padding:1rem;
-    margin-bottom:1rem;
+    background: rgba(${(props) => props.$bgColor}, 0.3);
+    margin: 0;
+    padding: 1rem;
+    margin-bottom: 1rem;
   }
 `;

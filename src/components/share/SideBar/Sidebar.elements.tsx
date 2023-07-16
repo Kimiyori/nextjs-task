@@ -3,17 +3,19 @@ import React, { ReactNode, useEffect, useReducer } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { SubMenu } from './SubMenu';
-import Friends from '@assets/icons/header/Friends.svg';
+import Resume from '@assets/icons/header/Resume.svg';
 import { sideBar } from '@/data/header';
 import { devices } from '@/data/breakpoints';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { SideInfo } from '../SideInfo/SideInfoMain/SideInfo';
-const NavIcon = styled.button`
+const NavIcon = styled.button<{ $click: boolean }>`
   display: flex;
   justify-content: flex-end;
   align-items: center;
   background: ${(props) => props.theme.color.Secondary};
   border: 0;
+  transform: ${({ $click }) => ($click ? 'rotate(180deg)' : 'rotate(-180deg)')};
+  transition-duration: 0.5s;
 `;
 
 const SidebarNav = styled.nav<{ $sidebar: boolean }>`
@@ -33,7 +35,6 @@ const SidebarNav = styled.nav<{ $sidebar: boolean }>`
 
 const SidebarWrap = styled.div`
   width: 100%;
-
 `;
 export const StyledSideInfo = styled(SideInfo)`
   margin: 3rem;
@@ -47,8 +48,8 @@ export const SidebarWrapper = ({ children }: { children: ReactNode }) => {
   }, [isSidebarOpen]);
   return (
     <>
-      <NavIcon>
-        <Image src={Friends} alt="Back" onClick={toggleSidebar} />
+      <NavIcon $click={isSidebarOpen}>
+        <Image src={Resume} alt="Back" onClick={toggleSidebar} width={30} />
       </NavIcon>
       <SidebarNav $sidebar={isSidebarOpen}>
         <SidebarWrap>

@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
 import { ReactNode } from 'react';
-import { Sidebar } from '../../SideBar/Sidebar';
 
 export const UpperHeaderSection = styled.section`
   background: ${(props) => props.theme.color.Secondary};
@@ -29,7 +28,7 @@ export const LeftElement = styled.figure`
   }
 `;
 
-export const UpperHeaderRight = ({ children }: { children: ReactNode }) => {
+export const UpperHeaderRight = ({ children, sidebar }: { children: ReactNode; sidebar: ReactNode }) => {
   const isDesktop = useMediaQuery(devices.lg);
-  return <>{isDesktop ? children : <Sidebar />}</>;
+  return <>{isDesktop ? children : sidebar}</>;
 };

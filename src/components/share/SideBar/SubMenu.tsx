@@ -46,7 +46,7 @@ const DropdownLink = styled(Link)`
   }
 `;
 
-export const SubMenu = ({ item, toggleSidebar }: { item: (typeof sideBar)[0]; toggleSidebar: () => void }) => {
+export const SubMenu = ({ item, toggleSidebar }: { item: typeof sideBar[0]; toggleSidebar: () => void }) => {
   const [subnav, setSubnav] = useState(false);
 
   const showSubnav = (event: MouseEvent<HTMLButtonElement>) => {

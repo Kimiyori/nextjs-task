@@ -1,6 +1,5 @@
-'use client'
+'use client';
 import styled from 'styled-components';
-
 
 export const MainBackground = styled.main`
   background: ${(props) => props.theme.color.Background};

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { styled } from 'styled-components';
 
 const MainBody = styled.main`
-  margin: 1.5rem;
+  margin: 3rem;
   padding: 2rem;
   background: ${(props) => props.theme.color.Secondary};
 `;

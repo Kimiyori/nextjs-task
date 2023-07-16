@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { ChangeEvent } from 'react';
 import { styled } from 'styled-components';
 
@@ -15,13 +15,12 @@ const Input = styled.input`
   outline: none;
   border: none;
   background: ${(props) => props.theme.color.Secondary};
-  color:${(props) => props.theme.color.OnSecondary}
+  color: ${(props) => props.theme.color.OnSecondary};
 `;
 const InputWrapper = styled.div`
   display: flex;
   border: 1px solid ${(props) => props.theme.color.Outline};
   margin: 0 1rem 1rem;
-
 `;
 export const InputForm = ({ inputValue, actionButtons, onChange, placeholder }: TInput) => {
   return (
