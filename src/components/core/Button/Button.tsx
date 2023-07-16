@@ -6,6 +6,7 @@ type TButton = {
   text: string;
   onClick?: (event?: MouseEventHandler<HTMLButtonElement>) => void;
   isDisabled?: boolean;
+  className?: string;
 };
 
 const ButtonElement = styled.button`
@@ -24,9 +25,9 @@ const ButtonElement = styled.button`
     cursor: auto;
   }
 `;
-export const Button = ({ text, onClick, isDisabled = false }: TButton) => {
+export const Button = ({ text, onClick, className, isDisabled = false }: TButton) => {
   return (
-    <ButtonElement disabled={isDisabled} onClick={() => onClick && onClick()}>
+    <ButtonElement className={className} disabled={isDisabled} onClick={() => onClick && onClick()}>
       {text}
     </ButtonElement>
   );

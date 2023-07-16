@@ -22,7 +22,7 @@ const PopupBody = styled.div.attrs(({ ref }) => ({
   transform: translate(-50%, -50%);
   text-align: center;
   margin: auto;
-  background: #f0ac35;
+  background: ${(props) => props.theme.color.Surface};
   padding: 2rem;
 `;
 
