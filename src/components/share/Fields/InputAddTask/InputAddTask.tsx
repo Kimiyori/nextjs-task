@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ToDoCategoriesNames } from '@data/todo';
 import { Data } from '@utils/types';
 import { Button } from '@components/core/Button/Button';
+
 export const InputAddTask = () => {
   const [potentialTask, setPotentialTask] = useState('');
   const { createTask } = useContext(TasksContext);

@@ -6,8 +6,10 @@ import { styled } from 'styled-components';
 import { ToDoEditTask } from '../ToDoEditTask/ToDoEditTask';
 import { DeleteButton } from '../../Fields/DeleteButton/DeleteButton';
 import { TextArea } from '@/components/core/TextArea/TestArea';
-import Image from 'next/image';
-import DragDrop from '@assets/icons/common/DragDrop.svg';
+import { ToDoDropdown } from './ToDoDropdown';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { devices } from '@/data/breakpoints';
+import { ToDoDragTask } from './ToDoTaskDnD';
 const TaskWrapper = styled.div`
   background: ${(props) => props.theme.color.Primary};
   justify-content: center;
@@ -16,18 +18,12 @@ const TaskWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.color.Outline};
   margin: 0 1rem 1rem;
 `;
-const StyledDragIcon = styled(Image)`
-  border-left: 1px solid ${(props) => props.theme.color.Outline};
-`;
+
 export const ToDoTask = ({ data, handleDragging }: { data: Data; handleDragging: (drag: boolean) => void }) => {
   const [isEditing, toggleEditing] = useReducer((isEditing) => !isEditing, false);
   const [task, setTask] = useState(data.content);
+  const isDesktop = useMediaQuery(devices.lg);
 
-  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-    event.dataTransfer.setData('text', data.id);
-    handleDragging(true);
-  };
-  const handleDragEnd = () => handleDragging(false);
   return (
     <>
       {isEditing ? (
@@ -37,13 +33,11 @@ export const ToDoTask = ({ data, handleDragging }: { data: Data; handleDragging:
           <TextArea text={task} disabled={true} />
           <Button text={'Edit'} onClick={toggleEditing} />
           <DeleteButton taskId={data.id} />
-          <StyledDragIcon
-            src={DragDrop}
-            alt={'DragDrop'}
-            draggable
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-          />
+          {isDesktop ? (
+            <ToDoDragTask taskId={data.id} handleDragging={handleDragging} />
+          ) : (
+            <ToDoDropdown taskId={data.id} />
+          )}
         </TaskWrapper>
       )}
     </>
