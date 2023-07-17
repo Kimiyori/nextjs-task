@@ -5,11 +5,12 @@ import Close from '@assets/icons/common/Close.svg';
 import { ReactNode, useReducer } from 'react';
 import Image from 'next/image';
 import { styled } from 'styled-components';
+import { MainBody } from '@/components/share/MainBody/MainBody';
 
-const MainBody = styled.main`
-  margin: 3rem;
+const StyledMainBody = styled(MainBody)`
   padding: 2rem;
   background: ${(props) => props.theme.color.Secondary};
+  display:block;
 `;
 const HeaderNav = styled.div`
   margin-bottom: 1rem;
@@ -46,7 +47,7 @@ export const DropdownWrapper = ({
   const [show, changeVisibility] = useReducer((checked) => !checked, true);
 
   return (
-    <MainBody>
+    <StyledMainBody $vertical={false}>
       {show ? (
         <>
           <HeaderNav>
@@ -70,6 +71,6 @@ export const DropdownWrapper = ({
           Why is it here?...
         </Button>
       )}
-    </MainBody>
+    </StyledMainBody>
   );
 };

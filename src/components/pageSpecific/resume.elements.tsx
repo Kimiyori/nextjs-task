@@ -3,8 +3,9 @@ import { styled } from 'styled-components';
 import { ReactNode } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
+import { MainBody } from '../share/MainBody/MainBody';
 
-export const MainResumeWrapper = styled.main`
+export const MainResumeWrapper = styled.main<{ $horisontal: boolean }>`
   background: ${(props) => props.theme.color.Background};
   margin: 3rem;
   display: flex;
@@ -62,10 +63,10 @@ export const ResumePageWrapper = ({ children, sidebar }: { children: ReactNode; 
   const isDesktop = useMediaQuery(devices.lg);
   return (
     <>
-      <MainResumeWrapper>
+      <MainBody $vertical={false}>
         <ResumeHeaderSection>{children}</ResumeHeaderSection>
         {isDesktop && sidebar}
-      </MainResumeWrapper>
+      </MainBody>
     </>
   );
 };
