@@ -21,12 +21,11 @@ export const ToDoList = ({ status }: { status: TtoDoCategories }) => {
   return (
     <ToDoListContainer $bgColor={status.bgColor} onDragOver={handleDragOver} onDrop={handleDrop}>
       <h3>{status.name}</h3>
-      <div>
         {todosFiltered.map(
           (item) =>
             status.name === item.status && <ToDoTask data={item} key={item.id} handleDragging={handleDragging} />,
         )}
-      </div>
+
     </ToDoListContainer>
   );
 };

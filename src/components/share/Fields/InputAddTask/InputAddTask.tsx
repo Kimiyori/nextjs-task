@@ -10,12 +10,12 @@ export const InputAddTask = () => {
   const [potentialTask, setPotentialTask] = useState('');
   const { createTask } = useContext(TasksContext);
   const handleCreateTask = () => {
-    if (!potentialTask) {
+    if (!potentialTask.trim().length) {
       return;
     }
     const newTask: Data = {
       id: uuidv4(),
-      content: potentialTask,
+      content: potentialTask.trim(),
       status: ToDoCategoriesNames.New,
     };
     createTask(newTask);
@@ -27,7 +27,7 @@ export const InputAddTask = () => {
       placeholder={'Add your new task'}
       inputValue={potentialTask}
       actionButtons={<Button text={'Add new task'} onClick={handleCreateTask} />}
-      onChange={(event: ChangeEvent<HTMLInputElement>) => setPotentialTask(event.target.value)}
+      onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setPotentialTask(event.target.value)}
     />
   );
 };

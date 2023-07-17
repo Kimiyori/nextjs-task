@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ThemeContext } from '@/context/ThemeContext';
 import { TimerProvider } from '@/context/TimerContext';
 import { GlobalStyles } from './globaStyles';
+import { TasksProvider } from '@/context/TasksContext';
 
 export const metadata: Metadata = {
   title: 'Resume',
@@ -16,8 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeContext>
           <GlobalStyles />
           <TimerProvider>
-            <Header />
-            {children}
+            <TasksProvider>
+              <Header />
+              {children}
+            </TasksProvider>
           </TimerProvider>
         </ThemeContext>
       </body>

@@ -18,11 +18,11 @@ export const ToDoEditTask = ({ data, toggleFrom, currentTask, setCurrentTask }: 
     toggleFrom();
   };
   const handleUpdate = () => {
-    currentTask ? updateTask(data.id, { content: currentTask }) : removeTask(data.id);
+    currentTask.trim() ? updateTask(data.id, { content: currentTask.trim() }) : removeTask(data.id);
     toggleFrom();
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setCurrentTask(event.target.value);
   };
 
