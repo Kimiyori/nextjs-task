@@ -8,7 +8,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  extends: ['plugin:@web-bee-ru/base', 'plugin:@web-bee-ru/react', 'next/core-web-vitals'],
+  extends: ['plugin:@web-bee-ru/next', 'next/core-web-vitals'],
 
   parser: '@typescript-eslint/parser',
   parserOptions: {

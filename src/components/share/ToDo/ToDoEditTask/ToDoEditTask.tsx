@@ -3,6 +3,8 @@ import { Data } from '@utils/types';
 import { TasksContext } from '@context/TasksContext';
 import { InputForm } from '@components/core/Input/Input';
 import { Button } from '@components/core/Button/Button';
+import { useError } from '@/hooks/useError';
+import { Tooltip } from '@/components/core/Tooltip/Tooltip';
 
 type TToDoEditItem = {
   data: Data;
@@ -12,14 +14,21 @@ type TToDoEditItem = {
 };
 
 export const ToDoEditTask = ({ data, toggleFrom, currentTask, setCurrentTask }: TToDoEditItem) => {
-  const { removeTask, updateTask } = useContext(TasksContext);
+  const { updateTask } = useContext(TasksContext);
   const handleCancel = () => {
     setCurrentTask(data.content);
     toggleFrom();
   };
+  const { error, setError } = useError();
   const handleUpdate = () => {
-    currentTask.trim() ? updateTask(data.id, { content: currentTask.trim() }) : removeTask(data.id);
-    toggleFrom();
+    if (!currentTask.trim().length) {
+      setError('Empty task is invalid');
+    } else if (currentTask.trim().length > 140) {
+      setError('Task is too long');
+    } else {
+      updateTask(data.id, { content: currentTask.trim() });
+      toggleFrom();
+    }
   };
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -28,6 +37,7 @@ export const ToDoEditTask = ({ data, toggleFrom, currentTask, setCurrentTask }: 
 
   return (
     <>
+      {error && <Tooltip content={error} />}
       <InputForm
         inputValue={currentTask}
         actionButtons={
