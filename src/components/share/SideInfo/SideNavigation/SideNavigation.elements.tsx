@@ -1,8 +1,7 @@
 'use client';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import DownButton from '@assets/icons/common/Dropdown.svg';
-import { ReactNode, useReducer } from 'react';
-import Image from 'next/image';
+import { FC, PropsWithChildren, useReducer } from 'react';
 import { styled } from 'styled-components';
 const AsideBody = styled.aside`
   background: ${(props) => props.theme.color.Secondary};
@@ -42,17 +41,16 @@ export const NavMenu = styled.ul`
   width: 100%;
   gap: 1rem;
 `;
-export const SideNavigationWrapper = ({ title, children }: { title: string; children: ReactNode }) => {
+type SideNavigationWrapperProps = { title: string } & PropsWithChildren;
+export const SideNavigationWrapper: FC<SideNavigationWrapperProps> = ({ title, children }) => {
   const [show, toggle] = useReducer((checked) => !checked, true);
   return (
-    <>
-      <AsideBody>
-        <NavTitle onClick={toggle}>
-          <h4>{title}</h4>
-          <Image src={show ? UpButton : DownButton} width={24} alt="UpButton icon" />
-        </NavTitle>
-        {show && children}
-      </AsideBody>
-    </>
+    <AsideBody>
+      <NavTitle onClick={toggle}>
+        <h4>{title}</h4>
+        {show ? <UpButton title="UpButton" /> : <DownButton title="DownButton" />}
+      </NavTitle>
+      {show && children}
+    </AsideBody>
   );
 };

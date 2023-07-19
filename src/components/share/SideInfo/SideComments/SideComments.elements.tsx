@@ -1,7 +1,6 @@
 'use client';
-import { ReactNode, useReducer } from 'react';
+import { FC, PropsWithChildren, useReducer } from 'react';
 import { styled } from 'styled-components';
-import Image from 'next/image';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import DownButton from '@assets/icons/common/Dropdown.svg';
 export const NavTitle = styled.div`
@@ -46,17 +45,16 @@ export const CommentButton = styled.button`
   border: 1px solid;
   padding: 0.5rem;
 `;
-export const SideCommentsWrapper = ({ title, children }: { title: string; children: ReactNode }) => {
+type SideCommentsWrapperProps = { title: string } & PropsWithChildren;
+export const SideCommentsWrapper: FC<SideCommentsWrapperProps> = ({ title, children }) => {
   const [show, toggle] = useReducer((checked) => !checked, true);
   return (
-    <>
       <AsideBody>
         <NavTitle onClick={toggle}>
           <h4>{title}</h4>
-          <Image src={show ? UpButton : DownButton} width={24} alt="UpButton icon" />
+          {show ? <UpButton title="UpButton" /> : <DownButton title="DownButton" />}
         </NavTitle>
         {show && children}
       </AsideBody>
-    </>
   );
 };

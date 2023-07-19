@@ -1,7 +1,7 @@
 'use client';
 import { Dropdown } from '@/components/feature/Dropdown/DropdownWrapper';
 import { TimerContext } from '@/context/TimerContext';
-import { useContext } from 'react';
+import { FC, useContext } from 'react';
 import { styled } from 'styled-components';
 
 const TimeWrapper = styled.div`
@@ -16,15 +16,15 @@ const TimeWrapper = styled.div`
   }
 `;
 
-export const Time = () => {
+export const Time: FC = () => {
   const { totalTime, handleReset } = useContext(TimerContext);
   return (
-    <>
+
       <Dropdown name={'Time'} reload={handleReset}>
         <TimeWrapper id="timer">
           <p>{totalTime}</p>
         </TimeWrapper>
       </Dropdown>
-    </>
+
   );
 };

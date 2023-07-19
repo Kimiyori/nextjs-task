@@ -5,12 +5,10 @@ import { SideInfoWrapper } from './SideInfo.elements';
 
 export const SideInfo = ({ className }: { className?: string }) => {
   return (
-    <>
-      <SideInfoWrapper className={className}>
-        <SideUserSummary />
-        <SideNavigation />
-        <SideComments />
-      </SideInfoWrapper>
-    </>
+    <SideInfoWrapper className={className}>
+      <SideUserSummary />
+      <SideNavigation />
+      <SideComments />
+    </SideInfoWrapper>
   );
 };

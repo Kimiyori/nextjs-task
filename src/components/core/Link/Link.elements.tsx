@@ -1,23 +1,13 @@
 'use client';
 
 import { useHover } from '@/hooks/useHover';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { css, styled } from 'styled-components';
 
-export type THNavLink = {
+export type NavLinkWrapperProps = {
   url: string;
-  img: { image: string; altName: string };
-  name: string;
-  isHorizontal?: boolean;
-  $primary?: boolean;
-};
-
-export type TNavLinkWrapper = {
-  url: string;
-  children?: ReactNode;
 };
 
 export const LinkContainer = styled.li<{ $isActive: boolean }>`
@@ -43,18 +33,18 @@ export const LinkText = styled.p<{ $isHorizontal: boolean; $primary?: boolean }>
       : css`
           margin: 0;
         `}
-  vertical-align: middle;
+  margin:0;
   font-weight: ${(props) => props.theme.font.weight};
 `;
-export const LinkAnchor = styled(Link)`
+export const LinkAnchor = styled(Link)<{ $isHorizontal?: boolean }>`
   text-decoration: none;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  flex-direction: ${(props) => (props.$isHorizontal ? 'row' : 'column')};
   color: ${(props) => props.theme.color.OnPrimary};
 `;
-export const StyledImage = styled(Image)`
-  vertical-align: middle;
-`;
-export const NavLinkWrapper = ({ url, children }: TNavLinkWrapper) => {
+
+export const NavLinkWrapper: FC<NavLinkWrapperProps & PropsWithChildren> = ({ url, children }) => {
   const { isHover, changeHoverState } = useHover();
   const location = usePathname();
   return (

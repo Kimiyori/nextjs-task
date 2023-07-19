@@ -1,6 +1,6 @@
 'use client';
 import { styled } from 'styled-components';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 const SideWrapper = styled.div`
   min-width: 400px;
@@ -8,10 +8,7 @@ const SideWrapper = styled.div`
   flex-direction: column;
   gap: 3rem;
 `;
-export const SideInfoWrapper = ({ className, children }: { className?: string; children: ReactNode }) => {
-  return (
-    <>
-      <SideWrapper className={className}>{children}</SideWrapper>
-    </>
-  );
+type SideInfoWrapperProps = { className?: string } & PropsWithChildren;
+export const SideInfoWrapper: FC<SideInfoWrapperProps> = ({ className, children }) => {
+  return <SideWrapper className={className}>{children}</SideWrapper>;
 };

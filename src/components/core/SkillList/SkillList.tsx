@@ -1,13 +1,14 @@
+import { FC } from 'react';
 import { SkillListWrapper } from './SkillList.elements';
 
-type TSkillList = {
+type SkillListProps = {
   title: string;
   skills: string[];
 };
 
-export const SkillList = ({ title, skills }: TSkillList) => {
+export const SkillList: FC<SkillListProps> = ({ title, skills }) => {
   return (
-    <>
+
       <SkillListWrapper>
         <h5>{title}</h5>
         <div className="d-flex flex-row flex-wrap gap-4">
@@ -18,6 +19,6 @@ export const SkillList = ({ title, skills }: TSkillList) => {
           ))}
         </div>
       </SkillListWrapper>
-    </>
+
   );
 };

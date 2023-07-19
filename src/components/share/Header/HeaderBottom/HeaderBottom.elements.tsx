@@ -1,6 +1,6 @@
 'use client';
 import { styled } from 'styled-components';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
 
@@ -23,7 +23,7 @@ const MenuWrapper = styled.section`
   flex-grow: 1;
   align-items: center;
 `;
-export const HeaderBottomWrapper = ({ children }: { children: ReactNode }) => {
+export const HeaderBottomWrapper: FC<PropsWithChildren> = ({ children }) => {
   const isDesktop = useMediaQuery(devices.lg);
   return (
     <>

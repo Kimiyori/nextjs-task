@@ -1,16 +1,14 @@
 import { bottomLeftHeader } from '@data/header';
 import { NavLink } from '@/components/core/Link/Link';
 import { Menu } from './headerMenu.elements';
+import { FC } from 'react';
 
-export const HeaderMenu = ({
-  data,
-  isHorizontal = true,
-  $primary = false,
-}: {
+type HeaderMenuProps = {
   data: typeof bottomLeftHeader;
   isHorizontal?: boolean;
   $primary?: boolean;
-}) => {
+};
+export const HeaderMenu: FC<HeaderMenuProps> = ({ data, isHorizontal = true, $primary = false }) => {
   return (
     <Menu $isHorizontal={isHorizontal}>
       {data.map((element) => (

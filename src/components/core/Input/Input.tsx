@@ -1,9 +1,9 @@
 'use client';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { styled } from 'styled-components';
 import { TextArea } from '../TextArea/TestArea';
 
-type TInput = {
+type InputProps = {
   inputValue: string;
   actionButtons?: JSX.Element;
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
@@ -15,14 +15,13 @@ const InputWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.color.Outline};
   margin: 0 1rem 1rem;
 `;
-export const InputForm = ({ inputValue, actionButtons, onChange, placeholder }: TInput) => {
-
+export const InputForm: FC<InputProps> = ({ inputValue, actionButtons, onChange, placeholder }) => {
   return (
-    <>
+
       <InputWrapper>
         <TextArea placeholder={placeholder} onChange={onChange} text={inputValue} />
         {actionButtons}
       </InputWrapper>
-    </>
+
   );
 };

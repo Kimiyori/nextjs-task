@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, useContext, useState } from 'react';
+import { ChangeEvent, FC, useContext, useState } from 'react';
 import { InputForm } from '@components/core/Input/Input';
 import { TasksContext } from '@context/TasksContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,7 +9,7 @@ import { Button } from '@components/core/Button/Button';
 import { Tooltip } from '@/components/core/Tooltip/Tooltip';
 import { useError } from '@/hooks/useError';
 
-export const InputAddTask = () => {
+export const InputAddTask:FC = () => {
   const [potentialTask, setPotentialTask] = useState('');
   const { error, setError } = useError();
   const { createTask } = useContext(TasksContext);

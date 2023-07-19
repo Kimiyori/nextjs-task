@@ -7,7 +7,8 @@ import Photo from '@assets//icons/header/Photo.svg';
 import Statistics from '@assets/icons/header/Statistics.svg';
 import Invoices from '@assets/icons/header/Invoices.svg';
 import Schedule from '@assets/icons/header/Schedule.svg';
-export const bottomLeftHeader = [
+import { NavLinkProps } from '@/utils/types';
+export const bottomLeftHeader:NavLinkProps[] = [
   {
     url: '/',
     img: { image: Resume, altName: 'Resume' },
@@ -29,7 +30,7 @@ export const bottomLeftHeader = [
     name: 'ToDo',
   },
 ];
-export const bottomRightHeader = [
+export const bottomRightHeader: NavLinkProps[] = [
   {
     url: '/notes',
     img: { image: Notes, altName: 'Notes' },
@@ -46,7 +47,7 @@ export const bottomRightHeader = [
     name: 'Photo',
   },
 ];
-export const upperHeader = [
+export const upperHeader: NavLinkProps[] = [
   {
     url: '/statistics',
     img: { image: Statistics, altName: 'Statistics' },

@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { useOutsideClick } from '@hooks/useOutsideClick';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 const PopupContainer = styled.div`
   position: fixed;
@@ -25,8 +25,8 @@ const PopupBody = styled.div.attrs(({ ref }) => ({
   background: ${(props) => props.theme.color.Surface};
   padding: 2rem;
 `;
-
-export const Popup = ({ toggleVisible, children }: { toggleVisible: () => void; children?: ReactNode }) => {
+type PopupProps = { toggleVisible: () => void };
+export const Popup: FC<PopupProps & PropsWithChildren> = ({ toggleVisible, children }) => {
   const ref = useOutsideClick(toggleVisible);
   return (
     <PopupContainer>

@@ -1,7 +1,6 @@
 'use client';
-import React, { ReactNode, useEffect, useReducer } from 'react';
+import React, { FC, PropsWithChildren,  useEffect, useReducer } from 'react';
 import { styled } from 'styled-components';
-import Image from 'next/image';
 import { SubMenu } from './SubMenu';
 import Resume from '@assets/icons/header/Resume.svg';
 import { sideBar } from '@/data/header';
@@ -40,7 +39,7 @@ export const StyledSideInfo = styled(SideInfo)`
   margin: 3rem;
   min-width: 200px;
 `;
-export const SidebarWrapper = ({ children }: { children: ReactNode }) => {
+export const SidebarWrapper: FC<PropsWithChildren> = ({ children }) => {
   const [isSidebarOpen, toggleSidebar] = useReducer((sidebar) => !sidebar, false);
   const isDesktop = useMediaQuery(devices.lg);
   useEffect(() => {
@@ -49,7 +48,7 @@ export const SidebarWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <NavIcon $click={isSidebarOpen}>
-        <Image src={Resume} alt="Back" onClick={toggleSidebar} width={30} />
+        <Resume title="Back" onClick={toggleSidebar} width={30} />
       </NavIcon>
       <SidebarNav $sidebar={isSidebarOpen}>
         <SidebarWrap>

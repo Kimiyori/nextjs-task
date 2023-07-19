@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { TooltipTip, TooltipWrapper } from './Tooltip.elements';
-
-export const Tooltip = ({ content }: { content: string }) => {
+type TooltipProps = { content: string };
+export const Tooltip: FC<TooltipProps> = ({ content }) => {
   return (
     <TooltipWrapper>
       <TooltipTip>{content}</TooltipTip>

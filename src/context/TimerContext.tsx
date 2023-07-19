@@ -2,11 +2,11 @@
 import { PropsWithChildren, createContext } from 'react';
 import { useTimer } from '@hooks/useTimer';
 
-export type TypeTimer = {
+export type TypeTimerProps = {
   totalTime: string;
   handleReset: () => void;
 };
-export const TimerContext = createContext<TypeTimer>({
+export const TimerContext = createContext<TypeTimerProps>({
   totalTime: '0',
   handleReset: () => undefined,
 });

@@ -1,5 +1,5 @@
 'use client';
-import { useReducer, useState } from 'react';
+import { FC, useReducer, useState } from 'react';
 import { Data } from '@utils/types';
 import { Button } from '@components/core/Button/Button';
 import { styled } from 'styled-components';
@@ -18,8 +18,8 @@ const TaskWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.color.Outline};
   margin: 0 1rem 1rem;
 `;
-
-export const ToDoTask = ({ data, handleDragging }: { data: Data; handleDragging: (drag: boolean) => void }) => {
+type ToDoTaskProps = { data: Data; handleDragging: (drag: boolean) => void };
+export const ToDoTask: FC<ToDoTaskProps> = ({ data, handleDragging }) => {
   const [isEditing, toggleEditing] = useReducer((isEditing) => !isEditing, false);
   const [task, setTask] = useState(data.content);
   const isDesktop = useMediaQuery(devices.lg);

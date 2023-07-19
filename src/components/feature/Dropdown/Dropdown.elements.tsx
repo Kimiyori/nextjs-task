@@ -2,15 +2,14 @@
 import DropdownIcon from '@assets/icons/common/Dropdown.svg';
 import Reload from '@assets/icons/common/Reload.svg';
 import Close from '@assets/icons/common/Close.svg';
-import { ReactNode, useReducer } from 'react';
-import Image from 'next/image';
+import { FC, PropsWithChildren, useReducer } from 'react';
 import { styled } from 'styled-components';
 import { MainBody } from '@/components/share/MainBody/MainBody';
 
 const StyledMainBody = styled(MainBody)`
   padding: 2rem;
   background: ${(props) => props.theme.color.Secondary};
-  display:block;
+  display: block;
 `;
 const HeaderNav = styled.div`
   margin-bottom: 1rem;
@@ -34,15 +33,12 @@ const Button = styled.button`
   border: 1px solid;
   padding: 0.5rem;
 `;
-export const DropdownWrapper = ({
-  name,
-  reload,
-  children,
-}: {
+
+export type DropdownProps = {
   name: string;
   reload: () => void;
-  children?: ReactNode;
-}) => {
+} & PropsWithChildren;
+export const DropdownWrapper: FC<DropdownProps> = ({ name, reload, children }) => {
   const [dropdown, toggle] = useReducer((checked) => !checked, true);
   const [show, changeVisibility] = useReducer((checked) => !checked, true);
 
@@ -54,13 +50,13 @@ export const DropdownWrapper = ({
             <HeaderTitle>{name}</HeaderTitle>
             <HeaderNavMenu>
               <li onClick={toggle}>
-                <Image src={DropdownIcon} alt="Dropdown" />
+                <DropdownIcon title="Dropdown" />
               </li>
               <li onClick={reload}>
-                <Image src={Reload} alt="Reload" />
+                <Reload title="Reload" />
               </li>
               <li onClick={changeVisibility}>
-                <Image src={Close} alt="Close" />
+                <Close title="Close" />
               </li>
             </HeaderNavMenu>
           </HeaderNav>

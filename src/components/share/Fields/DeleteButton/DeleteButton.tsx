@@ -1,10 +1,11 @@
-import { useContext, useReducer } from 'react';
+import { FC, useContext, useReducer } from 'react';
 import { TasksContext } from '@context/TasksContext';
 import { Button } from '@components/core/Button/Button';
 import { Popup } from '@components/core/Popup/Popup';
 import { ButtonContainer, StyledPopupButton } from './DeleteButton.elements';
 
-export const DeleteButton = ({ taskId }: { taskId: string }) => {
+type DeleteButtonProps = { taskId: string };
+export const DeleteButton: FC<DeleteButtonProps> = ({ taskId }) => {
   const [isActive, toggleisActive] = useReducer((isActive) => !isActive, false);
   const { removeTask } = useContext(TasksContext);
   const handleRemove = () => {

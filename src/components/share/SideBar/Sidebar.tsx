@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { SidebarWrapper, StyledSideInfo } from './Sidebar.elements';
 
-export const Sidebar = () => {
+export const Sidebar:FC = () => {
   return (
     <SidebarWrapper>
       <StyledSideInfo />

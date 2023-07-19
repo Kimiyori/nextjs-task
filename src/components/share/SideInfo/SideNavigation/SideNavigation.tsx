@@ -1,9 +1,9 @@
 import { sideNavData } from '@data/resume';
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { NavLink } from '@/components/core/Link/Link';
 import { NavMenu, SideNavigationWrapper } from './SideNavigation.elements';
 
-export const SideNavigation = () => {
+export const SideNavigation:FC = () => {
   return (
     <SideNavigationWrapper title={'Navigation'}>
       <hr />

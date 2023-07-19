@@ -1,7 +1,6 @@
 import { toDoCategories } from '@/data/todo';
 import { useReducer, MouseEvent, useContext } from 'react';
 import { styled } from 'styled-components';
-import Image from 'next/image';
 import Resume from '@assets/icons/header/Resume.svg';
 import { TasksContext } from '@/context/TasksContext';
 const ToDoDropdownContainer = styled.div`
@@ -40,7 +39,7 @@ export const ToDoDropdown = ({ taskId }: { taskId: string }) => {
   return (
     <ToDoDropdownContainer>
       <div>
-        <Image src={Resume} alt={'DropdownButton'} onClick={toggleIsShow} />
+        <Resume title="DropdownButton" onClick={toggleIsShow} />
       </div>
       {isShow && (
         <ToDoDropdownList>

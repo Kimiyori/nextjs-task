@@ -1,11 +1,10 @@
 'use client';
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, FC } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { styled } from 'styled-components';
-import { sideBar } from '@/data/header';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import Dropdown from '@assets/icons/common/Dropdown.svg';
+import { NavLinkProps } from '@/utils/types';
 const SidebarButton = styled.button`
   border: 0;
   background: ${(props) => props.theme.color.Primary};
@@ -45,8 +44,14 @@ const DropdownLink = styled(Link)`
     cursor: pointer;
   }
 `;
-
-export const SubMenu = ({ item, toggleSidebar }: { item: typeof sideBar[0]; toggleSidebar: () => void }) => {
+type SubMenuProps = {
+  item: {
+    title: string;
+    children: NavLinkProps[];
+  };
+  toggleSidebar: () => void;
+};
+export const SubMenu: FC<SubMenuProps> = ({ item, toggleSidebar }) => {
   const [subnav, setSubnav] = useState(false);
 
   const showSubnav = (event: MouseEvent<HTMLButtonElement>) => {
@@ -60,13 +65,13 @@ export const SubMenu = ({ item, toggleSidebar }: { item: typeof sideBar[0]; togg
         <div>
           <SidebarLabel>{item.title}</SidebarLabel>
         </div>
-        <div>{subnav ? <Image src={UpButton} alt="Back" /> : <Image src={Dropdown} alt="Back" />}</div>
+        <div>{subnav ? <UpButton title="Back" /> : <Dropdown title="Back" />}</div>
       </SidebarButton>
       {subnav &&
         item.children.map((item, index) => {
           return (
             <DropdownLink href={item.url} key={index} onClick={toggleSidebar}>
-              {<Image loading="eager" src={item.img.image} alt={item.img.altName} />}
+              <item.img.image title={item.img.altName} />
               <SidebarLabel>{item.name}</SidebarLabel>
             </DropdownLink>
           );

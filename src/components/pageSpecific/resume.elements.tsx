@@ -1,6 +1,6 @@
 'use client';
 import { styled } from 'styled-components';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren, ReactNode } from 'react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
 import { MainBody } from '../share/MainBody/MainBody';
@@ -59,14 +59,15 @@ export const ResumeWrapperSkills = styled(ResumeWrapper)`
     font-size: ${(props) => props.theme.font.size.big};
   }
 `;
-export const ResumePageWrapper = ({ children, sidebar }: { children: ReactNode; sidebar: ReactNode }) => {
+type ResumePageWrapperProps = { sidebar: ReactNode } & PropsWithChildren;
+export const ResumePageWrapper: FC<ResumePageWrapperProps> = ({ children, sidebar }) => {
   const isDesktop = useMediaQuery(devices.lg);
   return (
-    <>
+
       <MainBody $vertical={false}>
         <ResumeHeaderSection>{children}</ResumeHeaderSection>
         {isDesktop && sidebar}
       </MainBody>
-    </>
+
   );
 };

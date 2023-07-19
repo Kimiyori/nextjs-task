@@ -1,7 +1,7 @@
 'use client';
 import { Dropdown } from '@/components/feature/Dropdown/DropdownWrapper';
 import MapComponent from '@/components/feature/Map/Map';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { styled } from 'styled-components';
 
 const MenuWrapper = styled.div`
@@ -17,18 +17,18 @@ const MenuWrapper = styled.div`
   }
 `;
 
-export const MapPage = () => {
+export const MapPage: FC = () => {
   const [seed, setSeed] = useState(Math.random());
   const reset = () => {
     setSeed(Math.random());
   };
   return (
-    <>
+
       <Dropdown name={'Yandex Map'} reload={reset}>
         <MenuWrapper key={seed}>
           <MapComponent />
         </MenuWrapper>
       </Dropdown>
-    </>
+
   );
 };

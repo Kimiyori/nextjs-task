@@ -1,8 +1,9 @@
 import { addresses } from '@/data/resume';
 import { AddressListWrapper } from './Address.elements';
 import { Address } from './Address';
+import { FC } from 'react';
 
-export const AddressList = () => {
+export const AddressList:FC = () => {
   return (
     <AddressListWrapper>
       {addresses.map((address, index) => (
@@ -11,12 +12,11 @@ export const AddressList = () => {
           name={address.name}
           url={address.url}
           img={{
-            src: address.img.src,
-            alt: address.img.alt,
+            image: address.img.src,
+            altName: address.img.alt,
           }}
         />
       ))}
     </AddressListWrapper>
   );
 };
-1;

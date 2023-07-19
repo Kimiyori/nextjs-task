@@ -2,7 +2,7 @@
 import { styled } from 'styled-components';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren, ReactNode } from 'react';
 
 export const UpperHeaderSection = styled.section`
   background: ${(props) => props.theme.color.Secondary};
@@ -27,8 +27,8 @@ export const LeftElement = styled.figure`
     font-weight: ${(props) => props.theme.font.weight};
   }
 `;
-
-export const UpperHeaderRight = ({ children, sidebar }: { children: ReactNode; sidebar: ReactNode }) => {
+type UpperHeaderRightProps = { sidebar: ReactNode } & PropsWithChildren;
+export const UpperHeaderRight: FC<UpperHeaderRightProps> = ({ children, sidebar }) => {
   const isDesktop = useMediaQuery(devices.lg);
   return <>{isDesktop ? children : sidebar}</>;
 };

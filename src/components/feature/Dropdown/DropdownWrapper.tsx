@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-import { DropdownWrapper } from './Dropdown.elements';
+import { FC } from 'react';
+import { DropdownProps, DropdownWrapper } from './Dropdown.elements';
 
-export const Dropdown = ({ name, reload, children }: { name: string; reload: () => void; children?: ReactNode }) => {
+export const Dropdown: FC<DropdownProps> = ({ name, reload, children }) => {
   return (
     <DropdownWrapper name={name} reload={reload}>
       {children}

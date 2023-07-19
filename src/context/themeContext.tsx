@@ -1,9 +1,9 @@
 'use client';
-
 import StyledComponentsRegistry from '@/app/registry';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@data/styleVariables';
-export const ThemeContext = ({ children }: { children: React.ReactNode }) => {
+import { PropsWithChildren } from 'react';
+export const ThemeContext = ({ children }: PropsWithChildren) => {
   return (
     <StyledComponentsRegistry>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

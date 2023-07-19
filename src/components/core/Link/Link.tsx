@@ -1,10 +1,18 @@
-import { LinkAnchor, LinkText, NavLinkWrapper, StyledImage, THNavLink } from './Link.elements';
+import { NavLinkProps } from '@/utils/types';
+import { LinkAnchor, LinkText, NavLinkWrapper } from './Link.elements';
+import { FC } from 'react';
 
-export const NavLink = ({ url, img, name, isHorizontal = true, $primary }: THNavLink) => {
+export const NavLink: FC<NavLinkProps & { isHorizontal?: boolean; $primary?: boolean }> = ({
+  url,
+  img,
+  name,
+  isHorizontal = true,
+  $primary,
+}) => {
   return (
     <NavLinkWrapper url={url}>
-      <LinkAnchor href={url}>
-        <StyledImage src={img.image} alt={img.altName} />
+      <LinkAnchor $isHorizontal={isHorizontal} href={url}>
+        <img.image title={img.altName} />
         <LinkText $primary={$primary} $isHorizontal={isHorizontal}>
           {name}
         </LinkText>
