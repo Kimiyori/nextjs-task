@@ -7,6 +7,7 @@ import Connections from '@assets/icons/resume/nav/Connections.svg';
 import Friends from '@assets/icons/resume/nav/FriendsNavigation.svg';
 import Events from '@assets/icons/resume/nav/Events.svg';
 import Settings from '@assets/icons/resume/nav/SettingsNavigation.svg';
+import { NavLinkProps } from '@/utils/types';
 export const skillsList = [
   {
     title: 'Front-end stack',
@@ -25,7 +26,7 @@ export const skillsList = [
     skills: ['GIT', 'Docker', 'Nginx'],
   },
 ];
-export const addresses = [
+export const addresses: NavLinkProps[] = [
   {
     name: 'Rostov-on-Don',
     url: 'https://goo.gl/maps/1omRBkRkp5ek3C8d6',
@@ -55,28 +56,28 @@ export const addresses = [
 export const sideNavData = [
   {
     url: '/profile',
-    img: { image: MyProfile, altName: 'Profile' },
+    img: { src: MyProfile, alt: 'Profile' },
     name: 'My profile',
   },
   {
     url: '/balance',
-    img: { image: Balance, altName: 'Balance' },
+    img: { src: Balance, alt: 'Balance' },
     name: 'Balance',
   },
   {
     url: '/conn',
-    img: { image: Connections, altName: 'Connections' },
+    img: { src: Connections, alt: 'Connections' },
     name: 'Connections',
   },
   {
     url: '/bfriends',
-    img: { image: Friends, altName: 'Friends' },
+    img: { src: Friends, alt: 'Friends' },
     name: 'Friends',
   },
-  { url: '/events', img: { image: Events, altName: 'Events' }, name: 'Events' },
+  { url: '/events', img: { src: Events, alt: 'Events' }, name: 'Events' },
   {
     url: '/settings',
-    img: { image: Settings, altName: 'Settings' },
+    img: { src: Settings, alt: 'Settings' },
     name: 'Settings',
   },
 ];

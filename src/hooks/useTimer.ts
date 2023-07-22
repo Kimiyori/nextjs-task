@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { buildTimeStr, getTime } from '@utils/timer';
-import useIsTabActive from './useVisible';
+import useIsTabActive from './useIsTabActive';
 import { usePathname } from 'next/navigation';
 
 let initialTime = Date.now();
 
-export const useTimer = () => {
+const useTimer = () => {
   const isVisible = useIsTabActive();
   const path = usePathname();
   const [timer, setTimer] = useState(getTime(initialTime));
@@ -30,3 +30,4 @@ export const useTimer = () => {
   const totalTime = buildTimeStr(timer);
   return { totalTime, handleReset };
 };
+export default useTimer;

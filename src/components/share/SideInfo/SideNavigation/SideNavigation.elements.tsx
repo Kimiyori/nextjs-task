@@ -3,6 +3,20 @@ import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import DownButton from '@assets/icons/common/Dropdown.svg';
 import { FC, PropsWithChildren, useReducer } from 'react';
 import { styled } from 'styled-components';
+
+type SideNavigationWrapperProps = { title: string } & PropsWithChildren;
+const SideNavigationWrapper: FC<SideNavigationWrapperProps> = ({ title, children }) => {
+  const [show, toggle] = useReducer((checked) => !checked, true);
+  return (
+    <AsideBody>
+      <NavTitle onClick={toggle}>
+        <h4>{title}</h4>
+        {show ? <UpButton title="UpButton" /> : <DownButton title="DownButton" />}
+      </NavTitle>
+      {show && children}
+    </AsideBody>
+  );
+};
 const AsideBody = styled.aside`
   background: ${(props) => props.theme.color.Secondary};
   text-align: center;
@@ -41,16 +55,4 @@ export const NavMenu = styled.ul`
   width: 100%;
   gap: 1rem;
 `;
-type SideNavigationWrapperProps = { title: string } & PropsWithChildren;
-export const SideNavigationWrapper: FC<SideNavigationWrapperProps> = ({ title, children }) => {
-  const [show, toggle] = useReducer((checked) => !checked, true);
-  return (
-    <AsideBody>
-      <NavTitle onClick={toggle}>
-        <h4>{title}</h4>
-        {show ? <UpButton title="UpButton" /> : <DownButton title="DownButton" />}
-      </NavTitle>
-      {show && children}
-    </AsideBody>
-  );
-};
+export default SideNavigationWrapper;

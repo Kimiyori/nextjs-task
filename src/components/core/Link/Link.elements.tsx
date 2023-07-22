@@ -1,6 +1,5 @@
 'use client';
-
-import { useHover } from '@/hooks/useHover';
+import useHover from '@hooks/useHover';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
@@ -8,6 +7,20 @@ import { css, styled } from 'styled-components';
 
 export type NavLinkWrapperProps = {
   url: string;
+};
+
+const NavLinkWrapper: FC<NavLinkWrapperProps & PropsWithChildren> = ({ url, children }) => {
+  const { isHover, changeHoverState } = useHover();
+  const location = usePathname();
+  return (
+    <LinkContainer
+      onMouseEnter={changeHoverState}
+      onMouseLeave={changeHoverState}
+      $isActive={location === url || isHover}
+    >
+      {children}
+    </LinkContainer>
+  );
 };
 
 export const LinkContainer = styled.li<{ $isActive: boolean }>`
@@ -44,16 +57,4 @@ export const LinkAnchor = styled(Link)<{ $isHorizontal?: boolean }>`
   color: ${(props) => props.theme.color.OnPrimary};
 `;
 
-export const NavLinkWrapper: FC<NavLinkWrapperProps & PropsWithChildren> = ({ url, children }) => {
-  const { isHover, changeHoverState } = useHover();
-  const location = usePathname();
-  return (
-    <LinkContainer
-      onMouseEnter={changeHoverState}
-      onMouseLeave={changeHoverState}
-      $isActive={location === url || isHover}
-    >
-      {children}
-    </LinkContainer>
-  );
-};
+export default NavLinkWrapper;

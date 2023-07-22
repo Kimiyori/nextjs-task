@@ -3,8 +3,8 @@ import { FC, SVGProps } from 'react';
 export type NavLinkProps = {
   url: string;
   img: {
-    image: FC<React.PropsWithChildren<React.PropsWithChildren<SVGProps<SVGSVGElement> & { title?: string }>>>;
-    altName: string;
+    src: FC<React.PropsWithChildren<React.PropsWithChildren<SVGProps<SVGSVGElement> & { title?: string }>>>;
+    alt: string;
   };
   name: string;
 };

@@ -2,6 +2,22 @@
 import { FC } from 'react';
 import { styled } from 'styled-components';
 
+type ToDoDragTaskProps = {
+  taskId: string;
+  handleDragging: (drag: boolean) => void;
+};
+const ToDoDragTask: FC<ToDoDragTaskProps> = ({ taskId, handleDragging }) => {
+  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
+    event.dataTransfer.setData('text', taskId);
+    handleDragging(true);
+  };
+  const handleDragEnd = () => handleDragging(false);
+  return (
+    <StyledDragText draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      Drag
+    </StyledDragText>
+  );
+};
 const StyledDragText = styled.p`
   border-left: 1px solid ${(props) => props.theme.color.Outline};
   margin: 0;
@@ -14,19 +30,4 @@ const StyledDragText = styled.p`
     background-color: ${(props) => props.theme.color.Surface};
   }
 `;
-type ToDoDragTaskProps = {
-  taskId: string;
-  handleDragging: (drag: boolean) => void;
-};
-export const ToDoDragTask: FC<ToDoDragTaskProps> = ({ taskId, handleDragging }) => {
-  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-    event.dataTransfer.setData('text', taskId);
-    handleDragging(true);
-  };
-  const handleDragEnd = () => handleDragging(false);
-  return (
-    <StyledDragText draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-      Drag
-    </StyledDragText>
-  );
-};
+export default ToDoDragTask;

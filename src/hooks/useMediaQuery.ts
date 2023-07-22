@@ -1,12 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-
-export const useMediaQuery = (query: string) => {
+const useMediaQuery = (query: string) => {
   const getMatches = (query: string): boolean => {
-
+    // Prevents SSR issues
+    if (typeof window !== 'undefined') {
       return window.matchMedia(query).matches;
-
+    }
+    return false;
   };
 
   const [matches, setMatches] = useState<boolean>(getMatches(query));
@@ -31,3 +32,4 @@ export const useMediaQuery = (query: string) => {
 
   return matches;
 };
+export default useMediaQuery;

@@ -3,6 +3,21 @@ import { FC, PropsWithChildren, useReducer } from 'react';
 import { styled } from 'styled-components';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import DownButton from '@assets/icons/common/Dropdown.svg';
+
+type SideCommentsWrapperProps = { title: string } & PropsWithChildren;
+
+const SideCommentsWrapper: FC<SideCommentsWrapperProps> = ({ title, children }) => {
+  const [show, toggle] = useReducer((checked) => !checked, true);
+  return (
+    <AsideBody>
+      <NavTitle onClick={toggle}>
+        <h4>{title}</h4>
+        {show ? <UpButton title="UpButton" /> : <DownButton title="DownButton" />}
+      </NavTitle>
+      {show && children}
+    </AsideBody>
+  );
+};
 export const NavTitle = styled.div`
   display: flex;
   justify-content: space-between;
@@ -45,16 +60,4 @@ export const CommentButton = styled.button`
   border: 1px solid;
   padding: 0.5rem;
 `;
-type SideCommentsWrapperProps = { title: string } & PropsWithChildren;
-export const SideCommentsWrapper: FC<SideCommentsWrapperProps> = ({ title, children }) => {
-  const [show, toggle] = useReducer((checked) => !checked, true);
-  return (
-      <AsideBody>
-        <NavTitle onClick={toggle}>
-          <h4>{title}</h4>
-          {show ? <UpButton title="UpButton" /> : <DownButton title="DownButton" />}
-        </NavTitle>
-        {show && children}
-      </AsideBody>
-  );
-};
+export default SideCommentsWrapper;

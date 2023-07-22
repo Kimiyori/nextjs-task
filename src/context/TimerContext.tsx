@@ -1,6 +1,6 @@
 'use client';
 import { PropsWithChildren, createContext } from 'react';
-import { useTimer } from '@hooks/useTimer';
+import useTimer from '@hooks/useTimer';
 
 export type TypeTimerProps = {
   totalTime: string;

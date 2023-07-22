@@ -6,39 +6,12 @@ import { FC, PropsWithChildren, useReducer } from 'react';
 import { styled } from 'styled-components';
 import { MainBody } from '@/components/share/MainBody/MainBody';
 
-const StyledMainBody = styled(MainBody)`
-  padding: 2rem;
-  background: ${(props) => props.theme.color.Secondary};
-  display: block;
-`;
-const HeaderNav = styled.div`
-  margin-bottom: 1rem;
-  justify-content: space-between;
-  display: flex;
-`;
-const HeaderTitle = styled.h4`
-  font-size: ${(props) => props.theme.font.size.middle};
-  margin: 0;
-`;
-const HeaderNavMenu = styled.ul`
-  gap: 1rem;
-  display: flex;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-`;
-const Button = styled.button`
-  width: 100%;
-  background: ${(props) => props.theme.color.Primary};
-  border: 1px solid;
-  padding: 0.5rem;
-`;
-
 export type DropdownProps = {
   name: string;
   reload: () => void;
 } & PropsWithChildren;
-export const DropdownWrapper: FC<DropdownProps> = ({ name, reload, children }) => {
+
+const DropdownWrapper: FC<DropdownProps> = ({ name, reload, children }) => {
   const [dropdown, toggle] = useReducer((checked) => !checked, true);
   const [show, changeVisibility] = useReducer((checked) => !checked, true);
 
@@ -70,3 +43,31 @@ export const DropdownWrapper: FC<DropdownProps> = ({ name, reload, children }) =
     </StyledMainBody>
   );
 };
+const StyledMainBody = styled(MainBody)`
+  padding: 2rem;
+  background: ${(props) => props.theme.color.Secondary};
+  display: block;
+`;
+const HeaderNav = styled.div`
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  display: flex;
+`;
+const HeaderTitle = styled.h4`
+  font-size: ${(props) => props.theme.font.size.middle};
+  margin: 0;
+`;
+const HeaderNavMenu = styled.ul`
+  gap: 1rem;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+`;
+const Button = styled.button`
+  width: 100%;
+  background: ${(props) => props.theme.color.Primary};
+  border: 1px solid;
+  padding: 0.5rem;
+`;
+export default DropdownWrapper;

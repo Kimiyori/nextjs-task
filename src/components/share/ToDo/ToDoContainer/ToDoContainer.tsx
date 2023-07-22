@@ -1,9 +1,9 @@
 import { toDoCategories } from '@data/todo';
-import { CategoriesWrapper } from './ToDoContainer.elements';
-import { ToDoList } from '../ToDoList/ToDoList';
+import CategoriesWrapper from './ToDoContainer.elements';
+import ToDoList from '../ToDoList/ToDoList';
 import { FC } from 'react';
 
-export const ToDoContainer: FC = () => {
+const ToDoContainer: FC = () => {
   return (
     <CategoriesWrapper>
       {toDoCategories.map((category) => (
@@ -12,3 +12,4 @@ export const ToDoContainer: FC = () => {
     </CategoriesWrapper>
   );
 };
+export default ToDoContainer;

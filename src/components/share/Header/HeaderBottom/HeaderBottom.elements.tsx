@@ -1,9 +1,21 @@
 'use client';
 import { styled } from 'styled-components';
 import { FC, PropsWithChildren } from 'react';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
+import useMediaQuery from '@/hooks/useMediaQuery';
 import { devices } from '@/data/breakpoints';
 
+const HeaderBottomWrapper: FC<PropsWithChildren> = ({ children }) => {
+  const isDesktop = useMediaQuery(devices.lg);
+  return (
+    <>
+      {isDesktop && (
+        <BottomHeaderSection>
+          <MenuWrapper>{children}</MenuWrapper>
+        </BottomHeaderSection>
+      )}
+    </>
+  );
+};
 const BottomHeaderSection = styled.section`
   background: ${(props) => props.theme.color.Primary};
   min-height: 40px;
@@ -23,15 +35,4 @@ const MenuWrapper = styled.section`
   flex-grow: 1;
   align-items: center;
 `;
-export const HeaderBottomWrapper: FC<PropsWithChildren> = ({ children }) => {
-  const isDesktop = useMediaQuery(devices.lg);
-  return (
-    <>
-      {isDesktop && (
-        <BottomHeaderSection>
-          <MenuWrapper>{children}</MenuWrapper>
-        </BottomHeaderSection>
-      )}
-    </>
-  );
-};
+export default HeaderBottomWrapper;

@@ -1,11 +1,11 @@
 import { upperHeader } from '@data/header';
 import Back from '@assets/icons/header/Back.svg';
-import { HeaderMenu } from '@/components/core/Header/HeaderMenu';
-import { LeftElement, UpperHeaderRight, UpperHeaderSection } from './HeaderUpper.elements';
-import { Sidebar } from '../../SideBar/Sidebar';
+import HeaderMenu from '@/components/core/Header/HeaderMenu';
+import UpperHeaderRight, { LeftElement, UpperHeaderSection } from './HeaderUpper.elements';
+import Sidebar from '@components/share/SideBar/Sidebar';
 import { FC } from 'react';
 
-export const UpperHeader: FC = () => {
+const UpperHeader: FC = () => {
   return (
     <UpperHeaderSection>
       <LeftElement>
@@ -18,3 +18,4 @@ export const UpperHeader: FC = () => {
     </UpperHeaderSection>
   );
 };
+export default UpperHeader;

@@ -1,18 +1,14 @@
 import { NavLinkProps } from '@/utils/types';
-import { LinkAnchor, LinkText, NavLinkWrapper } from './Link.elements';
+import NavLinkWrapper, { LinkAnchor, LinkText } from './Link.elements';
 import { FC } from 'react';
 
-export const NavLink: FC<NavLinkProps & { isHorizontal?: boolean; $primary?: boolean }> = ({
-  url,
-  img,
-  name,
-  isHorizontal = true,
-  $primary,
-}) => {
+type navLinkProps = NavLinkProps & { isHorizontal?: boolean; $primary?: boolean };
+
+const NavLink: FC<navLinkProps> = ({ url, img, name, isHorizontal = true, $primary }) => {
   return (
     <NavLinkWrapper url={url}>
       <LinkAnchor $isHorizontal={isHorizontal} href={url}>
-        <img.image title={img.altName} />
+        <img.src title={img.alt} />
         <LinkText $primary={$primary} $isHorizontal={isHorizontal}>
           {name}
         </LinkText>
@@ -20,3 +16,4 @@ export const NavLink: FC<NavLinkProps & { isHorizontal?: boolean; $primary?: boo
     </NavLinkWrapper>
   );
 };
+export default NavLink;

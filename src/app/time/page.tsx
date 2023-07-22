@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Time } from '@/components/pageSpecific/time.elements';
+import Time from '@/components/pageSpecific/time.elements';
 
 export const metadata: Metadata = {
   title: 'Time',

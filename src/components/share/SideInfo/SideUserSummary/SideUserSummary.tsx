@@ -5,7 +5,7 @@ import Twitter from '@assets/icons/resume/nav/Twitter.svg';
 import { Activity, AsideBody, LinksList, Name, StyledUserAvatar } from './SideUserSummary.elements';
 import { FC } from 'react';
 
-export const SideUserSummary:FC = () => {
+const SideUserSummary: FC = () => {
   return (
     <AsideBody>
       <StyledUserAvatar src={UserAvatar} alt="User avatar" width={200} height={200} />
@@ -25,3 +25,4 @@ export const SideUserSummary:FC = () => {
     </AsideBody>
   );
 };
+export default SideUserSummary;

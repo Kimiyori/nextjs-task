@@ -1,7 +1,7 @@
 'use client';
 import { styled } from 'styled-components';
 
-export const CategoriesWrapper = styled.div`
+const CategoriesWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,3 +11,4 @@ export const CategoriesWrapper = styled.div`
     flex-direction: row;
   }
 `;
+export default CategoriesWrapper;

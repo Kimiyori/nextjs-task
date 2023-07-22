@@ -3,6 +3,31 @@ import { useReducer, MouseEvent, useContext } from 'react';
 import { styled } from 'styled-components';
 import Resume from '@assets/icons/header/Resume.svg';
 import { TasksContext } from '@/context/TasksContext';
+
+const ToDoDropdown = ({ taskId }: { taskId: string }) => {
+  const [isShow, toggleIsShow] = useReducer((isShow) => !isShow, false);
+  const { updateTask } = useContext(TasksContext);
+  const handleUpdateTask = (event: MouseEvent<HTMLLIElement>) => {
+    updateTask(taskId, { status: (event.target as HTMLElement).textContent as string });
+    toggleIsShow();
+  };
+  return (
+    <ToDoDropdownContainer>
+      <div>
+        <Resume title="DropdownButton" onClick={toggleIsShow} />
+      </div>
+      {isShow && (
+        <ToDoDropdownList>
+          {toDoCategories.map((category) => (
+            <DropdownItem onClick={handleUpdateTask} $color={category.bgColor} key={category.name}>
+              {category.name}
+            </DropdownItem>
+          ))}
+        </ToDoDropdownList>
+      )}
+    </ToDoDropdownContainer>
+  );
+};
 const ToDoDropdownContainer = styled.div`
   position: relative;
   height: 100%;
@@ -29,27 +54,4 @@ const DropdownItem = styled.li<{ $color: string }>`
   }
 `;
 
-export const ToDoDropdown = ({ taskId }: { taskId: string }) => {
-  const [isShow, toggleIsShow] = useReducer((isShow) => !isShow, false);
-  const { updateTask } = useContext(TasksContext);
-  const handleUpdateTask = (event: MouseEvent<HTMLLIElement>) => {
-    updateTask(taskId, { status: (event.target as HTMLElement).textContent as string });
-    toggleIsShow();
-  };
-  return (
-    <ToDoDropdownContainer>
-      <div>
-        <Resume title="DropdownButton" onClick={toggleIsShow} />
-      </div>
-      {isShow && (
-        <ToDoDropdownList>
-          {toDoCategories.map((category) => (
-            <DropdownItem onClick={handleUpdateTask} $color={category.bgColor} key={category.name}>
-              {category.name}
-            </DropdownItem>
-          ))}
-        </ToDoDropdownList>
-      )}
-    </ToDoDropdownContainer>
-  );
-};
+export default ToDoDropdown;

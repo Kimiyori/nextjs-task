@@ -1,14 +1,15 @@
 import { FC } from 'react';
-import { AddressElement } from './Address.elements';
+import { AddressElement } from '@components/core/Address/Address.elements';
 import { NavLinkProps } from '@/utils/types';
 
-export const Address: FC<NavLinkProps> = ({ name, url, img }) => {
+const Address: FC<NavLinkProps> = ({ name, url, img }) => {
   return (
     <AddressElement>
       <a href={url}>
-        <img.image title={img.altName} />
+        <img.src title={img.alt} />
         <p>{name}</p>
       </a>
     </AddressElement>
   );
 };
+export default Address;

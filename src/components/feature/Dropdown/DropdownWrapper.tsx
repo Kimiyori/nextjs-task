@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { DropdownProps, DropdownWrapper } from './Dropdown.elements';
+import DropdownWrapper, { DropdownProps } from '@components/feature/Dropdown/Dropdown.elements';
 
-export const Dropdown: FC<DropdownProps> = ({ name, reload, children }) => {
+const Dropdown: FC<DropdownProps> = ({ name, reload, children }) => {
   return (
     <DropdownWrapper name={name} reload={reload}>
       {children}
     </DropdownWrapper>
   );
 };
+export default Dropdown;

@@ -5,6 +5,42 @@ import { styled } from 'styled-components';
 import UpButton from '@assets/icons/resume/nav/UpButton.svg';
 import Dropdown from '@assets/icons/common/Dropdown.svg';
 import { NavLinkProps } from '@/utils/types';
+
+type SubMenuProps = {
+  item: {
+    title: string;
+    children: NavLinkProps[];
+  };
+  toggleSidebar: () => void;
+};
+const SubMenu: FC<SubMenuProps> = ({ item, toggleSidebar }) => {
+  const [subnav, setSubnav] = useState(false);
+
+  const showSubnav = (event: MouseEvent<HTMLButtonElement>) => {
+    item.children && event.preventDefault();
+    setSubnav(!subnav);
+  };
+
+  return (
+    <>
+      <SidebarButton onClick={(event: MouseEvent<HTMLButtonElement>) => item.children && showSubnav(event)}>
+        <div>
+          <SidebarLabel>{item.title}</SidebarLabel>
+        </div>
+        <div>{subnav ? <UpButton title="Back" /> : <Dropdown title="Back" />}</div>
+      </SidebarButton>
+      {subnav &&
+        item.children.map((item, index) => {
+          return (
+            <DropdownLink href={item.url} key={index} onClick={toggleSidebar}>
+              <item.img.src title={item.img.alt} />
+              <SidebarLabel>{item.name}</SidebarLabel>
+            </DropdownLink>
+          );
+        })}
+    </>
+  );
+};
 const SidebarButton = styled.button`
   border: 0;
   background: ${(props) => props.theme.color.Primary};
@@ -44,38 +80,4 @@ const DropdownLink = styled(Link)`
     cursor: pointer;
   }
 `;
-type SubMenuProps = {
-  item: {
-    title: string;
-    children: NavLinkProps[];
-  };
-  toggleSidebar: () => void;
-};
-export const SubMenu: FC<SubMenuProps> = ({ item, toggleSidebar }) => {
-  const [subnav, setSubnav] = useState(false);
-
-  const showSubnav = (event: MouseEvent<HTMLButtonElement>) => {
-    item.children && event.preventDefault();
-    setSubnav(!subnav);
-  };
-
-  return (
-    <>
-      <SidebarButton onClick={(event: MouseEvent<HTMLButtonElement>) => item.children && showSubnav(event)}>
-        <div>
-          <SidebarLabel>{item.title}</SidebarLabel>
-        </div>
-        <div>{subnav ? <UpButton title="Back" /> : <Dropdown title="Back" />}</div>
-      </SidebarButton>
-      {subnav &&
-        item.children.map((item, index) => {
-          return (
-            <DropdownLink href={item.url} key={index} onClick={toggleSidebar}>
-              <item.img.image title={item.img.altName} />
-              <SidebarLabel>{item.name}</SidebarLabel>
-            </DropdownLink>
-          );
-        })}
-    </>
-  );
-};
+export default SubMenu;

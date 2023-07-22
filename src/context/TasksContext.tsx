@@ -1,6 +1,6 @@
 'use client';
 import { Dispatch, PropsWithChildren, createContext } from 'react';
-import { useTaskList } from '../hooks/useTaskList';
+import useTaskList from '@hooks/useTaskList';
 import { Data } from '@utils/types';
 
 type TTasksContainer = {

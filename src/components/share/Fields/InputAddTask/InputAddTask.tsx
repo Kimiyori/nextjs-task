@@ -1,15 +1,15 @@
 'use client';
 import { ChangeEvent, FC, useContext, useState } from 'react';
-import { InputForm } from '@components/core/Input/Input';
+import InputForm from '@components/core/Input/Input';
 import { TasksContext } from '@context/TasksContext';
 import { v4 as uuidv4 } from 'uuid';
 import { ToDoCategoriesNames } from '@data/todo';
 import { Data } from '@utils/types';
 import { Button } from '@components/core/Button/Button';
-import { Tooltip } from '@/components/core/Tooltip/Tooltip';
-import { useError } from '@/hooks/useError';
+import Tooltip from '@/components/core/Tooltip/Tooltip';
+import useError from '@/hooks/useError';
 
-export const InputAddTask:FC = () => {
+const InputAddTask: FC = () => {
   const [potentialTask, setPotentialTask] = useState('');
   const { error, setError } = useError();
   const { createTask } = useContext(TasksContext);
@@ -42,3 +42,4 @@ export const InputAddTask:FC = () => {
     </>
   );
 };
+export default InputAddTask;

@@ -1,12 +1,35 @@
 'use client';
-import React, { FC, PropsWithChildren,  useEffect, useReducer } from 'react';
+import React, { FC, PropsWithChildren, useEffect, useReducer } from 'react';
 import { styled } from 'styled-components';
-import { SubMenu } from './SubMenu';
+import SubMenu from '@components/share/SideBar/SubMenu';
 import Resume from '@assets/icons/header/Resume.svg';
 import { sideBar } from '@/data/header';
 import { devices } from '@/data/breakpoints';
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { SideInfo } from '../SideInfo/SideInfoMain/SideInfo';
+import useMediaQuery from '@/hooks/useMediaQuery';
+import SideInfo from '@components/share/SideInfo/SideInfoMain/SideInfo';
+
+const SidebarWrapper: FC<PropsWithChildren> = ({ children }) => {
+  const [isSidebarOpen, toggleSidebar] = useReducer((sidebar) => !sidebar, false);
+  const isDesktop = useMediaQuery(devices.lg);
+  useEffect(() => {
+    document.body.style.overflow = isSidebarOpen ? 'hidden' : 'unset';
+  }, [isSidebarOpen]);
+  return (
+    <>
+      <NavIcon $click={isSidebarOpen}>
+        <Resume title="Back" onClick={toggleSidebar} width={30} />
+      </NavIcon>
+      <SidebarNav $sidebar={isSidebarOpen}>
+        <SidebarWrap>
+          {sideBar.map((item, index) => (
+            <SubMenu item={item} key={index} toggleSidebar={toggleSidebar} />
+          ))}
+          {!isDesktop && children}
+        </SidebarWrap>
+      </SidebarNav>
+    </>
+  );
+};
 const NavIcon = styled.button<{ $click: boolean }>`
   display: flex;
   justify-content: flex-end;
@@ -39,25 +62,4 @@ export const StyledSideInfo = styled(SideInfo)`
   margin: 3rem;
   min-width: 200px;
 `;
-export const SidebarWrapper: FC<PropsWithChildren> = ({ children }) => {
-  const [isSidebarOpen, toggleSidebar] = useReducer((sidebar) => !sidebar, false);
-  const isDesktop = useMediaQuery(devices.lg);
-  useEffect(() => {
-    document.body.style.overflow = isSidebarOpen ? 'hidden' : 'unset';
-  }, [isSidebarOpen]);
-  return (
-    <>
-      <NavIcon $click={isSidebarOpen}>
-        <Resume title="Back" onClick={toggleSidebar} width={30} />
-      </NavIcon>
-      <SidebarNav $sidebar={isSidebarOpen}>
-        <SidebarWrap>
-          {sideBar.map((item, index) => (
-            <SubMenu item={item} key={index} toggleSidebar={toggleSidebar} />
-          ))}
-          {!isDesktop && children}
-        </SidebarWrap>
-      </SidebarNav>
-    </>
-  );
-};
+export default SidebarWrapper;

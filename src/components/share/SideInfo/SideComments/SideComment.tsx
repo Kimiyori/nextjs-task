@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { CommentButton, SideCommentsWrapper, TextArea } from './SideComments.elements';
+import SideCommentsWrapper, { CommentButton, TextArea } from './SideComments.elements';
 
-export const SideComments:FC = () => {
+const SideComments: FC = () => {
   return (
     <SideCommentsWrapper title={'Share your thoughts'}>
       <hr />
@@ -10,3 +10,4 @@ export const SideComments:FC = () => {
     </SideCommentsWrapper>
   );
 };
+export default SideComments;

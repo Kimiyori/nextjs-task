@@ -2,7 +2,7 @@
 import { YMaps, useYMaps } from '@pbe/react-yandex-maps';
 import { mapData } from '@data/map';
 import { FC, useEffect, useRef } from 'react';
-import { Spinner } from '@components/core/LoadingElement/LoadingElement';
+import Spinner from '@components/core/LoadingElement/LoadingElement';
 
 const MapElement = () => {
   const mapRef = useRef(null);
@@ -27,15 +27,14 @@ const MapElement = () => {
 };
 const MapComponent: FC = () => {
   return (
-
-      <YMaps
-        query={{
-          load: 'package.full',
-          apikey: process.env.MAP_API_KEY,
-        }}
-      >
-        <MapElement />
-      </YMaps>
+    <YMaps
+      query={{
+        load: 'package.full',
+        apikey: process.env.REACT_APP_MAP_API_KEY,
+      }}
+    >
+      <MapElement />
+    </YMaps>
   );
 };
 export default MapComponent;

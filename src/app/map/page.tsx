@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MapPage } from '@/components/pageSpecific/map.elements';
+import MapPage from '@/components/pageSpecific/map.elements';
 
 export const metadata: Metadata = {
   title: 'Map',

@@ -8,59 +8,59 @@ import Statistics from '@assets/icons/header/Statistics.svg';
 import Invoices from '@assets/icons/header/Invoices.svg';
 import Schedule from '@assets/icons/header/Schedule.svg';
 import { NavLinkProps } from '@/utils/types';
-export const bottomLeftHeader:NavLinkProps[] = [
+export const bottomLeftHeader: NavLinkProps[] = [
   {
     url: '/',
-    img: { image: Resume, altName: 'Resume' },
+    img: { src: Resume, alt: 'Resume' },
     name: 'Resume',
   },
   {
     url: '/map',
-    img: { image: Map, altName: 'Map' },
+    img: { src: Map, alt: 'Map' },
     name: 'Map',
   },
   {
     url: '/time',
-    img: { image: Time, altName: 'Time' },
+    img: { src: Time, alt: 'Time' },
     name: 'Time',
   },
   {
     url: '/todo',
-    img: { image: Time, altName: 'Time' },
+    img: { src: Time, alt: 'Time' },
     name: 'ToDo',
   },
 ];
 export const bottomRightHeader: NavLinkProps[] = [
   {
     url: '/notes',
-    img: { image: Notes, altName: 'Notes' },
+    img: { src: Notes, alt: 'Notes' },
     name: 'Notes',
   },
   {
     url: '/friends',
-    img: { image: Friends, altName: 'Friends' },
+    img: { src: Friends, alt: 'Friends' },
     name: 'Friends',
   },
   {
     url: '/friends',
-    img: { image: Photo, altName: 'Photo' },
+    img: { src: Photo, alt: 'Photo' },
     name: 'Photo',
   },
 ];
 export const upperHeader: NavLinkProps[] = [
   {
     url: '/statistics',
-    img: { image: Statistics, altName: 'Statistics' },
+    img: { src: Statistics, alt: 'Statistics' },
     name: 'Statistics',
   },
   {
     url: '/invoices',
-    img: { image: Invoices, altName: 'Invoices' },
+    img: { src: Invoices, alt: 'Invoices' },
     name: 'Invoices',
   },
   {
     url: '/schedule',
-    img: { image: Schedule, altName: 'Schedule' },
+    img: { src: Schedule, alt: 'Schedule' },
     name: 'Schedule',
   },
 ];

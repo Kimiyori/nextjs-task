@@ -1,11 +1,12 @@
 import { FC, useContext, useReducer } from 'react';
 import { TasksContext } from '@context/TasksContext';
 import { Button } from '@components/core/Button/Button';
-import { Popup } from '@components/core/Popup/Popup';
-import { ButtonContainer, StyledPopupButton } from './DeleteButton.elements';
+import Popup from '@components/core/Popup/Popup';
+import { ButtonContainer, StyledPopupButton } from '@components/share/Fields/DeleteButton/DeleteButton.elements';
 
 type DeleteButtonProps = { taskId: string };
-export const DeleteButton: FC<DeleteButtonProps> = ({ taskId }) => {
+
+const DeleteButton: FC<DeleteButtonProps> = ({ taskId }) => {
   const [isActive, toggleisActive] = useReducer((isActive) => !isActive, false);
   const { removeTask } = useContext(TasksContext);
   const handleRemove = () => {
@@ -27,3 +28,4 @@ export const DeleteButton: FC<DeleteButtonProps> = ({ taskId }) => {
     </>
   );
 };
+export default DeleteButton;
